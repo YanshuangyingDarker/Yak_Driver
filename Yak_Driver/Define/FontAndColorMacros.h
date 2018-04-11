@@ -9,5 +9,10 @@
 #ifndef FontAndColorMacros_h
 #define FontAndColorMacros_h
 
+//字体
+#define OVERSTRIKING     @"Helvetica-Bold"
+#define BOLDSYSTEMFONT(FONTSIZE)[UIFont boldSystemFontOfSize:FONTSIZE]
+#define SYSTEMFONT(FONTSIZE)    [UIFont systemFontOfSize:FONTSIZE]
+#define OVERSTRIKINGFONT(FONTSIZE)    [UIFont fontWithName:(OVERSTRIKING) size:(FONTSIZE)]
 
 #endif /* FontAndColorMacros_h */

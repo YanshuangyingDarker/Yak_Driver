@@ -10,4 +10,6 @@
 
 @interface CHReplaceNullData : NSObject
 
++ (id)replaceNullData:(id)obj;
+
 @end

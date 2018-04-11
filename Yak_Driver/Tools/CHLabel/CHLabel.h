@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface CHLabel : UILabel
-
++(instancetype)labelWithText:(NSString *)text
+                   textColor:(UIColor *)textColor
+                        font:(UIFont *)font
+               textAlignment:(NSTextAlignment)textAlignment
+             backgroundColor:(UIColor *)bgColor;
 @end

@@ -9,7 +9,26 @@
 #ifndef Yak_Drive_PrefixHeader_pch
 #define Yak_Drive_PrefixHeader_pch
 
-// Include any system framework and library headers here that should be included in all compilation units.
-// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+//三方
+//#import <YYKit.h>
+#import <AFNetworking.h>
+#import <Masonry.h>
+#import <UIImageView+WebCache.h>
+#import <MBProgressHUD.h>
+
+//获取设备型号
+#import "CHMyDevice.h"
+
+//常用的宏
+#import "UtilsMacros.h"
+#import "FontAndColorMacros.h"
+
+//屏幕适配
+#import "CHAdapter.h"
+
+
+//快速创建UI控件
+#import "CHLabel.h"
+
 
 #endif /* Yak_Drive_PrefixHeader_pch */
