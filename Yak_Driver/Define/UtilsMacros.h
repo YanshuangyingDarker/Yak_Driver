@@ -17,10 +17,13 @@
 #define kUserDefaults       [NSUserDefaults standardUserDefaults]
 #define kNotificationCenter [NSNotificationCenter defaultCenter]
 
+#define kSafeAreaBottomHeight (KScreenHeight == 812.0 ? 34 : 0)
 #define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
 #define kNavBarHeight 44.0
 #define kTabBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49)
 #define kTopHeight (kStatusBarHeight + kNavBarHeight)
+
+#define KDistanceHeight (kSafeAreaBottomHeight + kTabBarHeight)
 
 //获取屏幕宽高
 #define KScreenWidth ([[UIScreen mainScreen] bounds].size.width)
@@ -64,9 +67,71 @@
 
 #define IPHONE_X                  @"iPhone X" // iPhone X的宏定义
 #define PHONE_X_TYPE              [[CHMyDevice currentDevice].deviceType isEqualToString:IPHONE_X]
-#define kSafeAreaBottomHeight (KScreenHeight == 812.0 ? 34 : 0)
 //iPhone X高度
 #define PHONEX_HEIGHT       812.f
+
+
+
+#pragma mark - weak / strong
+#define CHKit_WeakSelf        @CHKit_Weakify(self);
+#define CHKit_StrongSelf      @CHKit_Strongify(self);
+
+/*！
+ * 强弱引用转换，用于解决代码块（block）与强引用self之间的循环引用问题
+ * 调用方式: `@BAKit_Weakify`实现弱引用转换，`@BAKit_Strongify`实现强引用转换
+ *
+ * 示例：
+ * @CHKit_Weakify
+ * [obj block:^{
+ * @strongify_self
+ * self.property = something;
+ * }];
+ */
+#ifndef CHKit_Weakify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define CHKit_Weakify(object) autoreleasepool{} __weak __typeof__(object) weak##_##object = object;
+#else
+#define CHKit_Weakify(object) autoreleasepool{} __block __typeof__(object) block##_##object = object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define CHKit_Weakify(object) try{} @finally{} {} __weak __typeof__(object) weak##_##object = object;
+#else
+#define CHKit_Weakify(object) try{} @finally{} {} __block __typeof__(object) block##_##object = object;
+#endif
+#endif
+#endif
+
+/*！
+ * 强弱引用转换，用于解决代码块（block）与强引用对象之间的循环引用问题
+ * 调用方式: `@BAKit_Weakify(object)`实现弱引用转换，`@BAKit_Strongify(object)`实现强引用转换
+ *
+ * 示例：
+ * @BAKit_Weakify(object)
+ * [obj block:^{
+ * @BAKit_Strongify(object)
+ * strong_object = something;
+ * }];
+ */
+#ifndef CHKit_Strongify
+#if DEBUG
+#if __has_feature(objc_arc)
+#define CHKit_Strongify(object) autoreleasepool{} __typeof__(object) object = weak##_##object;
+#else
+#define CHKit_Strongify(object) autoreleasepool{} __typeof__(object) object = block##_##object;
+#endif
+#else
+#if __has_feature(objc_arc)
+#define CHKit_Strongify(object) try{} @finally{} __typeof__(object) object = weak##_##object;
+#else
+#define CHKit_Strongify(object) try{} @finally{} __typeof__(object) object = block##_##object;
+#endif
+#endif
+#endif
+
+
+
 
 #pragma mark - 根据文字内容和大小返回 size
 CG_INLINE CGSize
@@ -81,7 +146,6 @@ CHKit_LabelSizeWithTextAndWidthAndFont(NSString *text, CGFloat width, UIFont *fo
     CGSize size = CGSizeMake(width, MAXFLOAT);
     NSMutableParagraphStyle *style = [[NSMutableParagraphStyle alloc] init];
     [style setLineBreakMode:NSLineBreakByWordWrapping];
-    
     //    if (![text isKindOfClass:[NSString class]] || ![text isKindOfClass:[NSAttributedString class]])
     //    {
     //        NSLog(@"text 错误，此功能仅限 NSString / NSAttributedString 类型！");

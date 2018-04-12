@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "CHOrderListController.h"
+#import "RTRootNavigationController.h"
+#import "BaseNavigationController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +19,12 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    CHOrderListController *dataVC = [[CHOrderListController alloc] init];
+    self.window.rootViewController = [[BaseNavigationController alloc] initWithRootViewController:dataVC];
+    [self.window makeKeyAndVisible];
+    //    [[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 1, 1)] QR:@"hello world"];//救命啊，没这句后面再生成二维码会崩啊，可是是为啥啊？？？这句一定要在地图加载前先写
+    
     return YES;
 }
 

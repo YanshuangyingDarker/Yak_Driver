@@ -46,7 +46,7 @@
     //默认导航栏样式：黑字
     self.StatusBarStyle = UIStatusBarStyleLightContent;
     self.automaticallyAdjustsScrollViewInsets = NO;
-//    self.view.backgroundColor = kAllBgColor;
+    self.view.backgroundColor = KWhiteColor;
     //适配iOS11
     [self setSystem];
 }
@@ -188,9 +188,9 @@
         [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
         
         if (isLeft) {
-            [btn setContentEdgeInsets:UIEdgeInsetsMake(0, -10, 0, 10)];
+            [btn setContentEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 10)];
         }else{
-            [btn setContentEdgeInsets:UIEdgeInsetsMake(0, 10, 0, -10)];
+            [btn setContentEdgeInsets:UIEdgeInsetsMake(0, -20, 0, -10)];
         }
         
         btn.tag = [tags[i++] integerValue];

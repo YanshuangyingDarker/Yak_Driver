@@ -19,6 +19,8 @@
 //获取设备型号
 #import "CHMyDevice.h"
 
+//数据判空
+#import "CHReplaceNullData.h"
 //常用的宏
 #import "UtilsMacros.h"
 #import "FontAndColorMacros.h"
@@ -26,9 +28,18 @@
 //屏幕适配
 #import "CHAdapter.h"
 
-
 //快速创建UI控件
 #import "CHLabel.h"
 
+//颜色
+#import "UIColor+Hex.h"
+
+//按钮
+#import "CHButton.h"
+
+//分类
+#import "UIView+ch_basic.h"
+//字符串
+#import "NSString+Add.h"
 
 #endif /* Yak_Drive_PrefixHeader_pch */
