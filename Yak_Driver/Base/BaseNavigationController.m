@@ -28,7 +28,7 @@
 //    [navigationBar setBackgroundImage:[UIImage imageWithColor:[self colorFromHexRGB:@"33cccc"]]
 //                       forBarPosition:UIBarPositionAny
 //                           barMetrics:UIBarMetricsDefault];
-//    [navBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"5D87F3"]] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
+    [navBar setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithHex:@"5D87F3"]] forBarPosition:UIBarPositionAny barMetrics:UIBarMetricsDefault];
     [navBar setShadowImage:[UIImage new]];//去掉阴影线
 }
 - (void)viewDidLoad {

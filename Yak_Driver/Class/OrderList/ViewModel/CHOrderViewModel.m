@@ -40,9 +40,9 @@
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.dataModelArray[indexPath.row].isRecive isEqualToString:@"1"]) {
-        return tRealHeight(135);
+        return tRealHeight(150);
     }else{
-        return tRealHeight(95);
+        return tRealHeight(100);
     }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -184,19 +184,18 @@
     for (NSString * imageName in imageNames) {
         UIButton * btn = [UIButton buttonWithType:UIButtonTypeCustom];
         [btn setImage:[UIImage imageNamed:imageName] forState:UIControlStateNormal];
-        btn.frame = CGRectMake(0, 0, 30, 30);
+        btn.frame = CGRectMake(0, 0, 40, 40);
         [btn addTarget:target action:action forControlEvents:UIControlEventTouchUpInside];
         
         if (isLeft) {
-            [btn setContentEdgeInsets:UIEdgeInsetsMake(0, 20, 0, 10)];
+            [btn setContentEdgeInsets:UIEdgeInsetsMake(0, 10, 0, 10)];
         }else{
-            [btn setContentEdgeInsets:UIEdgeInsetsMake(0, -20, 0, -10)];
+            [btn setContentEdgeInsets:UIEdgeInsetsMake(0, -10, 0, -10)];
         }
         
         btn.tag = [tags[i++] integerValue];
         UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithCustomView:btn];
         [items addObject:item];
-        
     }
     if (isLeft) {
         self.navigationItem.leftBarButtonItems = items;

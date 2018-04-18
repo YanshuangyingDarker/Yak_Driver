@@ -18,12 +18,13 @@
 #define kNotificationCenter [NSNotificationCenter defaultCenter]
 
 #define kSafeAreaBottomHeight (KScreenHeight == 812.0 ? 34 : 0)
+
 #define kStatusBarHeight [[UIApplication sharedApplication] statusBarFrame].size.height
 #define kNavBarHeight 44.0
 #define kTabBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49)
 #define kTopHeight (kStatusBarHeight + kNavBarHeight)
 
-#define KDistanceHeight (kSafeAreaBottomHeight + kTabBarHeight)
+#define KDistanceHeight (kSafeAreaBottomHeight + kStatusBarHeight + kNavBarHeight)
 
 //获取屏幕宽高
 #define KScreenWidth ([[UIScreen mainScreen] bounds].size.width)

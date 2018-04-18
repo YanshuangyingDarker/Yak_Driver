@@ -60,7 +60,7 @@
     [self addNavigationItemWithImageNames:@[@"my_icon"] isLeft:YES target:self action:@selector(meClick) tags:@[@100]];
 }
 - (void)addHeaderView{
-    self.headView = [CHOrderHeaderView shareOrderHeadFrame:CGRectMake(0, 0, KScreenWidth, tRealHeight(123)) isHaveOrder:YES travelName:@"九寨沟一日游" placeName:@"时候播世博" phone:@"18080087309" timeStr:@"2018.3.10"];
+    self.headView = [CHOrderHeaderView shareOrderHeadFrame:CGRectMake(0, 0, KScreenWidth, tRealHeight(123)) isHaveOrder:NO travelName:@"九寨沟一日游" placeName:@"时候播世博" phone:@"18080087309" timeStr:@"2018.3.10"];
     [self.view addSubview:self.headView];
 }
 - (void)meClick{
